@@ -25,12 +25,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install Python 3.7 from apt
+    - name: Explore the GitHub hosted virtual environment
       run: |
-        sudo apt-get install software-properties-common
-        sudo add-apt-repository ppa:deadsnakes/ppa
-        sudo apt-get update
-        sudo apt-get install python3.7
+        echo 'Here is the path to the toolcache: $RUNNER_TOOL_CACHE'
+        ls $RUNNER_TOOL_CACHE/Python/*
+        echo 'Testing installed Python package'
+        exit 1
       shell: bash
     - name: Download Python v3.7 from actions/python-releases repository.
       run: |
@@ -39,8 +39,6 @@ runs:
         echo 'Listing contents of directory'
         ls ./*
         ls ./bin
-        echo 'Testing installed Python package'
-        ./bin/easy_install-3.7
       shell: bash
     - name: Install ARM GCC
       run: |
