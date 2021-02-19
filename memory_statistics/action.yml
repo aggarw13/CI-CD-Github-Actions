@@ -29,8 +29,7 @@ runs:
       run: |
         echo 'Here is the path to the toolcache: $RUNNER_TOOL_CACHE'
         ls $RUNNER_TOOL_CACHE/Python/*
-        echo 'Testing installed Python package'
-        exit 1
+        cp -r $RUNNER_TOOL_CACHE/Python/3.7.9 $RUNNER_TOOL_CACHE/Python/3.7.10
       shell: bash
     - name: Download Python v3.7 from actions/python-releases repository.
       run: |
@@ -39,6 +38,8 @@ runs:
         echo 'Listing contents of directory'
         ls ./*
         ls ./bin
+        echo 'Testing installed Python package'
+        python ./bin/easy_install-3.7
       shell: bash
     - name: Install ARM GCC
       run: |
