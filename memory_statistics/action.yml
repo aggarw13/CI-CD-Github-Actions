@@ -25,15 +25,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install Python v3.7
+    - name: Download Python v3.7 from actions/python-releases repository.
       run: |
-        /usr/bin/python --version
-        sudo apt-get install software-properties-common
-        sudo add-apt-repository ppa:deadsnakes/ppa
-        sudo apt-get update
-        sudo apt-get install python3.7
-        /usr/bin/python --version
-        /usr/bin/python3.7 --version
+        wget https://github.com/actions/python-versions/releases/download/3.7.10-99135/python-3.7.10-linux-18.04-x64.tar.gz 
+        tar -xvzf python-3.7.10-linux-18.04-x64.tar.gz
+        ls ./*
+        cd python/bin/
+        ls
+        ./python3 --version
       shell: bash
     - name: Install ARM GCC
       run: |
