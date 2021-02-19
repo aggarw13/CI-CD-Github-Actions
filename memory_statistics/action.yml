@@ -25,6 +25,15 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Install Python v3.7
+      run: |
+        /usr/bin/python --version
+        sudo apt-get install software-properties-common
+        sudo add-apt-repository ppa:deadsnakes/ppa
+        sudo apt-get update
+        sudo apt-get install python3.7
+        /usr/bin/python --version
+        /usr/bin/python3.7 --version
     - name: Install ARM GCC
       run: |
           wget -qO- "${{ inputs.toolchain_link }}" | sudo tar --strip-components=1 -xj -C /usr/local
