@@ -34,6 +34,7 @@ runs:
         sudo apt-get install python3.7
         /usr/bin/python --version
         /usr/bin/python3.7 --version
+      shell: bash
     - name: Install ARM GCC
       run: |
           wget -qO- "${{ inputs.toolchain_link }}" | sudo tar --strip-components=1 -xj -C /usr/local
