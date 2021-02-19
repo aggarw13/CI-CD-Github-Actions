@@ -33,7 +33,7 @@ runs:
         ls ./*
         ls ./bin
         echo 'Testing installed Python package'
-        ./bin/python3 --version
+        ./bin/easy_install-3.7
       shell: bash
     - name: Install ARM GCC
       run: |
